@@ -1,6 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import authRoutes from './routes/auth.routes';
+import customerRoutes from './routes/customer.routes';
+import productRoutes from './routes/product.routes';
+import challanRoutes from './routes/challan.routes';
 import { errorHandler } from './middlewares/errorHandler';
 
 const app = express();
@@ -15,6 +18,9 @@ app.get('/health', (req, res) => {
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/customers', customerRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/challans', challanRoutes);
 
 // Centralized Error Middleware
 app.use(errorHandler);

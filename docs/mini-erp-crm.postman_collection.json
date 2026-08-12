@@ -1,0 +1,37 @@
+{
+  "info": {
+    "name": "Mini ERP CRM API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "token", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Auth Login",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"email\": \"admin@erp.com\",\n  \"password\": \"Admin@123\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/auth/login", "host": ["{{baseUrl}}"], "path": ["api", "auth", "login"] }
+      }
+    },
+    {
+      "name": "List Customers",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/api/customers?page=1&limit=10", "host": ["{{baseUrl}}"], "path": ["api", "customers"], "query": [{ "key": "page", "value": "1" }, { "key": "limit", "value": "10" }] }
+      }
+    },
+    {
+      "name": "Create Customer",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"name\": \"Test Customer\",\n  \"mobile\": \"9999999999\",\n  \"email\": \"customer@example.com\",\n  \"businessName\": \"Example Traders\",\n  \"customerType\": \"WHOLESALE\",\n  \"address\": \"123 Main Road\",\n  \"status\": \"LEAD\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/customers", "host": ["{{baseUrl}}"], "path": ["api", "customers"] }
+      }
+    }
+  ]
+}
